@@ -1,0 +1,14 @@
+<!-- Post preview-->
+<div class="post-preview">
+    <a href="{% url 'post-detail-page' post.slug %}">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <h3 class="post-subtitle">{{ post.excerpt }}</h3>
+    </a>
+    <p class="post-meta">
+        Posted by
+        <a href="mailto:{{ post.author.email_address }}">{{ post.author }}</a>
+        on {{ post.date }}
+    </p>
+</div>
+<!-- Divider-->
+<hr class="my-4" />

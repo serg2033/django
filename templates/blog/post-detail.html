@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+| {{ post.title }}
+{% endblock title %}
+
+
+
+{% block content %}
+
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{{ post.image.url }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.excerpt }}</h2>
+                    <span class="meta">
+                        Posted by
+                        <a style="color: hotpink;" href="mailto:{{ post.author.email_address }}">{{ post.author }} </a>
+                        on {{ post.date }}
+                    </span>
+                    <br>
+                    {% for tag in post_tags %}
+                        <span class="tag" 
+                        style="background-color: white; 
+                        color: black; 
+                        padding: 0.1rem 0.1rem;
+                        border-radius: 4px">
+                        #{{ tag.caption }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>{{ post.content | safe }}</p>
+            </div>
+        </div>
+    </div>
+</article>
+
+{% endblock content %}
